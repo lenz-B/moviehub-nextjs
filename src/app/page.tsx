@@ -1,6 +1,7 @@
 "use client";
 
-import Search from "@/components/search";
+import Search from "@/components/Search";
+import Spinner from "@/components/Spinner";
 import { useEffect, useState } from "react";
 
 const API_BASE_URL = 'https://api.themoviedb.org/3'
@@ -17,30 +18,38 @@ const API_OPTIONS = {
 
 export default function Home() {
   const [searchTerm, setSearchTerm] = useState<string>('');
-
   const [errorMessage, setErrorMessage] = useState<string>('')
+  const [movieList, setMovieList] = useState<any[]>([]);
+  const [isloading, setIsLoading] = useState<boolean>(false);
 
   const fetchMovies = async () => {
+    setIsLoading(true)
+    setErrorMessage('')
+
     try {
       const endpoint = `${API_BASE_URL}/discover/movie?sort_popularity.desc`
       const response = await fetch(endpoint, API_OPTIONS)
-
+      
       if(!response.ok) throw new Error("Failed to fetch movies");
       
       const data = await response.json();
 
-      console.log(data);
+      if(data.Response === 'False'){
+        setErrorMessage(data.Error || 'No movies found');
+        setMovieList([])
+        return
+      }
       
-      
+      setMovieList(data.results || [])      
     } catch (error) {
       console.error(`Error fetching movies: ${error}`);
       setErrorMessage('Error fetching movies. Please try again later.');
+    } finally {
+      setIsLoading(false)
     }
   }
 
-  useEffect(() => {
-    console.log('asdasdf',API_KEY);
-    
+  useEffect(() => { 
     fetchMovies();
   }, []);
 
@@ -56,9 +65,21 @@ export default function Home() {
           <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
         </header>
         <section className="all-movies">
-          <h2>All Movies</h2>
+          <h2 className="mt-[40px]">All Movies</h2>
 
-          {errorMessage && <p className="error-message" >{errorMessage}</p> }
+          {isloading ? (
+            <Spinner/>            
+          ): errorMessage ? (
+            <p className="text-shadow-indigo-500" >{errorMessage}</p>
+          ): (
+            <ul>
+              {movieList.map((movie) => (
+                <p key={movie.id} className="text-white">{movie.title} </p>
+                
+              ))}
+            </ul>
+          )}
+
         </section>
 
 
