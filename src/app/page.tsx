@@ -2,7 +2,7 @@
 
 import { getTrendingMovies, updateSearchCount } from "@/appwrite";
 import MovieCard from "@/components/MovieCard";
-import Search from "@/components/Search";
+import Search from "../components/Search";
 import Spinner from "@/components/Spinner";
 import { Movie, SearchDocument } from "@/types/types";
 import { useEffect, useState } from "react";
