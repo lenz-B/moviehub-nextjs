@@ -5,11 +5,11 @@ type SearchProps = {
   setSearchTerm: (value: string) => void;
 };
 
-export const Search: React.FC<SearchProps> = ({searchTerm, setSearchTerm}) => {
+export const SearchBar: React.FC<SearchProps> = ({searchTerm, setSearchTerm}) => {
   return (
     <div className="search">
       <div>
-        <img src="search.svg" alt="search" />
+        <img src="search.svg" alt="search"/>
 
         <input
          type="text" 

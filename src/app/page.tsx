@@ -2,7 +2,7 @@
 
 import { getTrendingMovies, updateSearchCount } from "@/appwrite";
 import MovieCard from "@/components/MovieCard";
-import { Search } from "@/components/Search";
+import { SearchBar } from "@/components/SearchBar";
 import Spinner from "@/components/Spinner";
 import { Movie, SearchDocument } from "@/types/types";
 import { useEffect, useState } from "react";
@@ -95,7 +95,7 @@ export default function Home() {
           <img src="./hero.png" alt="Hero Banner" />
           <h1>Find <span className="text-gradient">Movies</span> You&apos;ll Enjoy Without the Hassle</h1>
           
-          <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+          <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
         </header>
 
         {trendingMovies.length > 0 && (
