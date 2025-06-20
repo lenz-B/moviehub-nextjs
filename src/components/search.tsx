@@ -5,7 +5,7 @@ type SearchProps = {
   setSearchTerm: (value: string) => void;
 };
 
-const Search: React.FC<SearchProps> = ({searchTerm, setSearchTerm}) => {
+export const Search: React.FC<SearchProps> = ({searchTerm, setSearchTerm}) => {
   return (
     <div className="search">
       <div>
@@ -21,4 +21,3 @@ const Search: React.FC<SearchProps> = ({searchTerm, setSearchTerm}) => {
     </div>
   )
 }
-export default Search
