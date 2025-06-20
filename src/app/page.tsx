@@ -1,15 +1,20 @@
 "use client";
 
 import { getTrendingMovies, updateSearchCount } from "@/appwrite";
-import MovieCard from "@/components/movieCard";
+import MovieCard from "@/components/MovieCard";
 import Search from "@/components/Search";
 import Spinner from "@/components/Spinner";
+import { Movie, SearchDocument } from "@/types/types";
 import { useEffect, useState } from "react";
-import { useAsync, useDebounce } from 'react-use'
+import { useDebounce } from 'react-use'
 
 const API_BASE_URL = 'https://api.themoviedb.org/3'
 
-const API_KEY = process.env.NEXT_PUBLIC_TMDB_API_KEY;
+const API_KEY = process.env.NEXT_PUBLIC_TMDB_API_KEY!;
+
+if (!API_KEY) {
+  throw new Error('Missing NEXT_PUBLIC_TMDB_API_KEY');
+}
 
 const API_OPTIONS = {
   method: 'GET', 
@@ -22,14 +27,14 @@ const API_OPTIONS = {
 export default function Home() {
   const [searchTerm, setSearchTerm] = useState<string>('');
   const [errorMessage, setErrorMessage] = useState<string>('')
-  const [movieList, setMovieList] = useState<any[]>([]);
-  const [trendingMovies, setTrendingMovies] = useState<any[]>([])
+  const [movieList, setMovieList] = useState<Movie[]>([]);
+  const [trendingMovies, setTrendingMovies] = useState<SearchDocument[]>([])
   const [isloading, setIsLoading] = useState<boolean>(false);
   const [debounceSearchTerm, setDebounceSearchTerm] = useState<string>('')
 
   useDebounce(() => setDebounceSearchTerm(searchTerm), 500, [searchTerm] )
 
-  const fetchMovies = async (query = '') => {
+  const fetchMovies = async (query = ''): Promise<void> => {
     setIsLoading(true)
     setErrorMessage('')
 
@@ -66,7 +71,7 @@ export default function Home() {
     try {
       const movies = await getTrendingMovies()
 
-      setTrendingMovies(movies)
+      setTrendingMovies(movies ?? [])
     } catch (error) {
       console.error(`Error fetching trending movies: ${error}`);
       // setErrorMessage('Error fetching trending movies')
