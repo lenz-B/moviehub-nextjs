@@ -9,9 +9,6 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@heroui/spinner": "^2.2.18",
-    "@heroui/system": "^2.4.17",
-    "@heroui/theme": "^2.4.17",
     "@radix-ui/react-label": "^2.1.7",
     "@shadcn/ui": "^0.0.4",
     "@tabler/icons-react": "^3.33.0",
