@@ -1,36 +1,122 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 📽️ MovieHub Next.js
 
-## Getting Started
+A simple movie app built with **Next.js** and **Tailwind CSS** that allows users to search for movies, view trending movies, and see detailed information.
 
-First, run the development server:
+---
+
+## 🚀 Demo
+
+Check out the live demo [here](https://cine-trends.vercel.app/).
+
+---
+
+## ✨ Features
+
+✅ Search for movies  
+✅ View trending movies (new!)  
+✅ View movie details  
+✅ Responsive design  
+✅ Styled with Tailwind CSS
+
+---
+
+## 🛠️ Tech Stack
+
+- Next.js
+- Tailwind CSS
+- TMDb API
+- Appwrite
+
+---
+
+## 📦 Installation
 
 ```bash
+# Clone the repository
+git clone https://github.com/lenz-B/moviehub-nextjs.git
+
+# Navigate to the project directory
+cd moviehub-nextjs
+
+# Install dependencies
+npm install
+
+# Create a .env.local file and add your TMDb API key
+# Example:
+# TMDB_API_KEY=your_api_key_here
+
+# Run the development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📁 Folder Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+moviehub-nextjs/
+├── components/   # Reusable components
+├── pages/        # Next.js pages
+├── public/       # Static assets
+├── styles/       # Global styles
+├── .env.local    # Environment variables
+├── next.config.js
+├── tailwind.config.js
+└── ...
+```
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## 🔑 Environment Variables
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Create a `.env.local` file in the root directory and add your TMDB API key:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```env
+TMDB_API_KEY=your_api_key_here
+```
 
-## Deploy on Vercel
+You can get a free API key from [TMDB API](http://www.TMDBapi.com/apikey.aspx).
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🧑‍💻 Author
+
+- **LenzB** – [lenz-B](https://github.com/lenz-B)
+
+---
+
+## 📄 License
+
+This project is open source and available under the [MIT License](LICENSE).
+
+---
+
+## 🙌 Acknowledgements
+
+- [Next.js Documentation](https://nextjs.org/docs)
+- [Tailwind CSS Documentation](https://tailwindcss.com/docs)
+- [TMDB API](https://developer.themoviedb.org/)
+
+---
+
+**Happy Coding! 🎉**
+
+---
+
+## ✅ To Use
+
+- Fork and clone the repo.
+- Add your TMDB API key.
+- Run `npm run dev`.
+- Enjoy searching and exploring trending movies!
+
+---
+
+### ⭐️ Give it a star if you like it!
+
+---
+
+## 🔗 Links
+
+- [Live Demo](https://cine-trends.vercel.app/)
+- [GitHub Repository](https://github.com/lenz-B/moviehub-nextjs)
